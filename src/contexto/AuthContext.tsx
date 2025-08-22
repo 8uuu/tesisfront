@@ -13,8 +13,8 @@ export interface RegisterFormData {
   estado_civil?: string;
   uso_de_anteojos: boolean;
   estudio_y_trabajo?: string;
-  horas_trabajo_semanal?: number;
-  horas_descanso_dia?: number;
+  horas_trabajo_semanal?: string; // Antes como "Number"
+  horas_descanso_dia?: string; // Antes como "Number"
 }
 
 // Define el tipo para el contexto de autenticación
