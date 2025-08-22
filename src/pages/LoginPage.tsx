@@ -21,8 +21,8 @@ const LoginPage: React.FC = () => {
     estado_civil: '',
     uso_de_anteojos: false,
     estudio_y_trabajo: '',
-    horas_trabajo_semanal: undefined,
-    horas_descanso_dia: undefined,
+    horas_trabajo_semanal: '',
+    horas_descanso_dia: '',
   });
   const [registerError, setRegisterError] = useState<string>('');
   const [registerSuccess, setRegisterSuccess] = useState<string>('');
@@ -59,14 +59,14 @@ const LoginPage: React.FC = () => {
     setRegisterError('');
     setRegisterSuccess('');
 
-    const dataToSend: RegisterFormData = {
+    const dataToSend = {
       ...registerFormData,
       horas_trabajo_semanal: registerFormData.horas_trabajo_semanal === '' ? undefined : Number(registerFormData.horas_trabajo_semanal),
       horas_descanso_dia: registerFormData.horas_descanso_dia === '' ? undefined : Number(registerFormData.horas_descanso_dia),
       fecha_de_nacimiento: registerFormData.fecha_de_nacimiento === '' ? undefined : registerFormData.fecha_de_nacimiento,
     };
 
-    const success = await register(dataToSend);
+    const success = await register(dataToSend as any);
     if (success) {
       setRegisterSuccess('¡Registro exitoso! Ahora puedes iniciar sesión.');
       setRegisterFormData({
@@ -406,5 +406,6 @@ const LoginPage: React.FC = () => {
 
 
 export default LoginPage;
+
 
 
