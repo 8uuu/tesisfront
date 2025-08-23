@@ -37,7 +37,7 @@
     "vite": "^6.3.5"
   },
     "engines": {
-    "node": ">=18.0.0" // Recomendado para Heroku
+    "node": ">="24.0.0" 
   }
 
   
