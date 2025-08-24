@@ -140,7 +140,7 @@ const RecordingPage: React.FC = () => {
   const [isRecordingPaused, setIsRecordingPaused] = useState<boolean>(false); // Nuevo estado para pausa de grabación
 
   // Configuration constants
-  const API_BASE_URL = 'http://127.0.0.1:8000';
+ const API_BASE_URL = import.meta.env.VITE_BACKEND_URL//'http://127.0.0.1:8000' si es que es local
   const BACKEND_CUESTIONARIO_URL = `${API_BASE_URL}/cuestionarios/`;
 
   const BACKEND_PREDICT_URL = `${API_BASE_URL}/predict/`;

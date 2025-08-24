@@ -17,7 +17,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/trabajadores/`);
+        const response = await fetch(`${BACKEND_URL}`);
         if (!response.ok) {
           throw new Error('Error al obtener datos');
         }

@@ -170,7 +170,7 @@ const HistorialPage: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const apiUrl = `http://127.0.0.1:8000/trabajadores/${trabajadorId}/sesiones/summary/?start_date=${start}&end_date=${end}`;
+      const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/trabajadores/${trabajadorId}/sesiones/summary/?start_date=${start}&end_date=${end}`;
       const response = await fetch(apiUrl);
       if (!response.ok) {
         const errorData = await response.json();
