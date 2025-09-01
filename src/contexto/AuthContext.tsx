@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
 
 // Define la URL base del backend
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL //'http://127.0.0.1:8000' si es que es local
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL //Para implementacion local: const API_BASE_URL = 'http://127.0.0.1:8000' 
 
 // Define el tipo de datos del registro 
 export interface RegisterFormData {

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth, type RegisterFormData } from '../contexto/AuthContext'; // Importar RegisterFormData
+import { useAuth, type RegisterFormData } from '../contexto/AuthContext'; // Importa RegisterFormData
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -11,7 +11,7 @@ const LoginPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [showRegisterForm, setShowRegisterForm] = useState<boolean>(false);
 
-  // Estados para el formulario de registro
+// Estados iniciales para el formulario de registro
   const [registerFormData, setRegisterFormData] = useState<RegisterFormData>({
     nombre: '',
     username: '',
@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
   const { login, register } = useAuth();
   const navigate = useNavigate();
 
-  // Manejador para el envío del formulario de Login
+ // Manejador (Handler) para el envío del formulario de Login
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -44,7 +44,7 @@ const LoginPage: React.FC = () => {
     }
   };
 
-  // Manejador para el cambio de inputs en el formulario de Registro
+// Manejador para el cambio de inputs en el formulario de Registro
   const handleRegisterInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     setRegisterFormData(prevData => ({
@@ -53,7 +53,7 @@ const LoginPage: React.FC = () => {
     }));
   };
 
-  // Manejador para el envío del formulario de Registro
+// Manejador para el envío del formulario de Registro
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setRegisterError('');
@@ -82,7 +82,7 @@ const LoginPage: React.FC = () => {
     }
   };
 
-
+// PARTE VISUAL
   return (
     <div className="min-h-screen bg-[#1F1F1F] text-gray-200 flex flex-col lg:flex-row items-center justify-center p-4 overflow-hidden relative">
       {/* Fondo abstracto con formas de colores */}
@@ -97,7 +97,7 @@ const LoginPage: React.FC = () => {
         {/* Columna izquierda: Formulario de Login/Registro */}
         <div className="w-full lg:w-1/2 p-8 lg:p-12 bg-[#2B2B2B] flex flex-col items-center justify-center min-h-[600px]">
           <div className="flex flex-col items-center mb-8">
-            {/* Logo de Lemon Squeezy (puedes reemplazarlo con tu propio SVG o imagen) */}
+            {/* Logo*/}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-10 w-10 text-yellow-500"
@@ -110,27 +110,6 @@ const LoginPage: React.FC = () => {
           </div>
 
           <div className="w-full max-w-sm">
-            {/* Botones de Social Login */}
-            {/* <div className="flex space-x-4 mb-6">
-              <button className="flex-1 flex items-center justify-center px-4 py-2 border border-gray-600 rounded-lg shadow-sm text-sm font-medium text-gray-50 bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#2B2B2B] focus:ring-blue-500">
-                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.24 10.23c-.23-.74-.86-1.27-1.76-1.27h-.01c-.9 0-1.73.53-1.95 1.27-.22.75-.01 1.76.53 2.45l.13.11.01.01c.64.67 1.52 1.1 2.45 1.1.92 0 1.77-.42 2.45-1.1.53-.7.75-1.7.53-2.45zm-1.8 1.48c-.02.02-.03.04-.05.06-.61.64-1.45 1.05-2.39 1.05-.94 0-1.78-.41-2.39-1.05-.02-.02-.03-.04-.05-.06-.55-.74-.75-1.75-.54-2.49.21-.75.97-1.3 1.83-1.3h.01c.86 0 1.62.55 1.83 1.3.21.74.01 1.75-.54 2.49zm1.8-1.48c.02-.02.03-.04.05-.06.61-.64 1.45-1.05 2.39-1.05.94 0 1.78.41 2.39 1.05.02.02.03.04.05.06.55.74.75 1.75.54 2.49-.21.75-.97 1.3-1.83 1.3h-.01c-.86 0-1.62-.55-1.83-1.3-.21-.74-.01-1.75.54-2.49zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                </svg>
-                Sign in with Google
-              </button>
-              <button className="flex-1 flex items-center justify-center px-4 py-2 border border-gray-600 rounded-lg shadow-sm text-sm font-medium text-gray-50 bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#2B2B2B] focus:ring-blue-500">
-                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.49-1.76.85-2.75 1.04C18.06 4.3 16.92 4 15.6 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98-3.56-.18-6.73-1.89-8.85-4.48-.37.64-.58 1.39-.58 2.19 0 1.49.76 2.82 1.92 3.6c-.7-.02-1.36-.21-1.93-.53v.05c0 2.08 1.48 3.82 3.44 4.22-.36.1-.73.15-1.12.15-.27 0-.53-.03-.78-.08.55 1.71 2.14 2.95 4.02 2.98-1.47 1.15-3.32 1.84-5.33 1.84-.35 0-.69-.02-1.03-.06C4.46 19.98 6.64 20.5 8.98 20.5c6.54 0 10.1-5.43 10.1-10.1 0-.15 0-.3-.01-.45.69-.49 1.28-1.11 1.75-1.8z"/>
-                </svg>
-                Sign in with Twitter
-              </button>
-            </div> */}
-
-            {/* <div className="relative flex py-5 items-center">
-              <div className="flex-grow border-t border-gray-600"></div>
-              <span className="flex-shrink mx-4 text-gray-400 text-sm">Or</span>
-              <div className="flex-grow border-t border-gray-600"></div>
-            </div> */}
 
             {/* Formulario de Login */}
             {!showRegisterForm ? (
@@ -379,14 +358,12 @@ const LoginPage: React.FC = () => {
 
         {/* Columna derecha: Testimonio y fondo dinámico */}
         <div className="hidden lg:flex w-1/2 p-12 bg-gradient-to-br from-indigo-800 via-purple-800 to-pink-800 flex flex-col items-center justify-center relative">
-          {/* Aquí podrías poner el mismo fondo abstracto animado si quieres que se vea igual que el del body */}
-          {/* Por ahora, usaremos un gradiente simple */}
 
           <div className="relative z-10 p-8 bg-gray-900 bg-opacity-80 rounded-xl shadow-lg border border-gray-700 max-w-md">
             <p className="text-xl italic text-gray-100 leading-relaxed mb-6">
 ¿Te imaginas una aplicación que monitorea tu estrés en tiempo real y te da el poder de entenderlo con estadísticas claras? Eso es StressScan.            </p>
             <div className="flex items-center">
-              {/* Avatar del testimonio (ejemplo con SVG, puedes usar una imagen) */}
+              {/* Avatar del testimonio*/}
               <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
                 <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
