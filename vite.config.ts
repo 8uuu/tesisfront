@@ -17,7 +17,7 @@ export default defineConfig({
   preview: {
     port:  8080,
     strictPort: true,
-    host: "0.0.0.0", // Escuchar todas las interfaces de red
-    allowedHosts: ["tesisfront-lz3d.onrender.com"] // Aceptar peticiones desde el dominio público de Render
+    host: "0.0.0.0"//, // Escuchar todas las interfaces de red
+   // allowedHosts: ["tesisfront-lz3d.onrender.com"] // Aceptar peticiones desde el dominio público de Render
   }
 })
